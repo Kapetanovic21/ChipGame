@@ -1,31 +1,29 @@
-# Built things
-_Debug/
-Compiled/
+<?php
+session_start();
+if (!isset($_SESSION['credits'])) {
+    $_SESSION['credits'] = 100;
+}
+?>
 
-# AudioCache can be rebuilt from sources
-AudioCache/
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Slot Machine</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Slot Machine</h1>
 
-# Lockfile
-_OpenInEditor.lock
+    <div id="slot-machine">
+        <div class="reel" id="reel1">🍒</div>
+        <div class="reel" id="reel2">🍒</div>
+        <div class="reel" id="reel3">🍒</div>
+    </div>
 
-# User settings
-Game.agf.user
-*.crm.user
+    <button onclick="spin()">Spin</button>
 
-# Backups
-Game.agf.bak
-backup_acsprset.spr
+    <p>Credits: <span id="credits"><?php echo $_SESSION['credits']; ?></span></p>
 
-# Memory dumps
-*.dmp
-
-# Temporary files
-# temporarily created during sprite or room background compression
-~aclzw.tmp
-# temporary, main game data, before getting packed into exe
-game28.dta
-# temporary build of the game before being moved to Compiled/ folder
-*.exe
-
-# Log files
-warnings.log
+    <script src="script.js"></script>
+</body>
+</html>
